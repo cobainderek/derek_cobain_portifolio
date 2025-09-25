@@ -46,3 +46,5 @@ Para executar este projeto localmente, siga os passos abaixo:
 
 -   **LinkedIn:** [in/derek-cobain](https://www.linkedin.com/in/derek-cobain)
 -   **Email:** derek.cobaindev@gmail.com
+# derek_cobain_portifolio
+Meu Portifólio
