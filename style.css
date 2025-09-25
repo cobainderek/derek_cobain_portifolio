@@ -1,0 +1,392 @@
+:root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --terminal-bg: #000000;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --accent-red: #B71C1C;
+            --accent-cyan: #00ffff;
+            --accent-green: #00ff41;
+            --border-color: #333333;
+            --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.3);
+            --glow-red: 0 0 10px rgba(183, 28, 28, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .terminal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(45deg, var(--terminal-bg), var(--secondary-bg));
+            min-height: 100vh;
+            border: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .terminal-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .system-header {
+            border-bottom: 2px solid var(--accent-red);
+            padding: 20px 0;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(90deg, transparent, rgba(183, 28, 28, 0.1), transparent);
+        }
+
+        .system-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: var(--glow-red);
+            margin-bottom: 10px;
+            animation: flicker 2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .system-subtitle {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            text-shadow: var(--glow-cyan);
+            letter-spacing: 2px;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-green);
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .terminal-prompt::before {
+            content: 'derek@system:~$ ';
+            color: var(--accent-cyan);
+        }
+
+        .section-frame {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--terminal-bg));
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-red);
+            margin: 30px 0;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-frame::before {
+            content: '█';
+            position: absolute;
+            top: -1px;
+            left: -5px;
+            color: var(--accent-red);
+            font-size: 1.5rem;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .section-header {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: var(--glow-cyan);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .tech-block {
+            background: var(--terminal-bg);
+            border: 1px solid var(--accent-green);
+            padding: 20px;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-green), transparent);
+            animation: scan 3s infinite linear;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .tech-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .tech-list {
+            list-style: none;
+        }
+
+        .tech-list li {
+            padding: 5px 0;
+            border-bottom: 1px dotted var(--border-color);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .tech-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-size: 0.8rem;
+        }
+
+        .status-log {
+            background: var(--terminal-bg);
+            border: 1px solid var(--accent-cyan);
+            padding: 15px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-log::before {
+            content: '[SYSTEM STATUS]';
+            color: var(--accent-cyan);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: var(--glow-cyan);
+        }
+
+        .log-line {
+            margin: 5px 0;
+            opacity: 0;
+            animation: typewriter 0.5s forwards;
+        }
+
+        .log-line:nth-child(2) { animation-delay: 0.5s; }
+        .log-line:nth-child(3) { animation-delay: 1s; }
+        .log-line:nth-child(4) { animation-delay: 1.5s; }
+        .log-line:nth-child(5) { animation-delay: 2s; }
+
+        @keyframes typewriter {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .contact-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-node {
+            background: linear-gradient(45deg, var(--terminal-bg), var(--secondary-bg));
+            border: 1px solid var(--accent-red);
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-node:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-2px);
+        }
+
+        .contact-node::before {
+            content: '●';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            animation: glitch-1 2s infinite;
+            color: var(--accent-red);
+            z-index: -1;
+        }
+
+        .glitch-text::after {
+            animation: glitch-2 2s infinite;
+            color: var(--accent-cyan);
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+        /* ESTILO PARA A FOTO DE PERFIL */
+        .photo-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-photo {
+            width: 450x;
+            height: 200px;
+            border: 3px solid var(--accent-cyan);
+            object-fit: cover; /* Garante que a foto não fique distorcida */
+            filter: grayscale(100%) contrast(120%); /* Filtro preto e branco com mais contraste */
+            box-shadow: var(--glow-cyan);
+            position: relative; /* Necessário para o efeito de scanlines */
+            background-color: var(--terminal-bg); /* Fundo caso a imagem não carregue */
+        }
+
+        /* Efeito de "Scan Lines" de monitor antigo */
+        .profile-photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: linear-gradient(
+                rgba(0, 255, 255, 0.05) 50%,
+                transparent 50%
+            );
+            background-size: 100% 4px;
+            opacity: 0.5;
+        }
+        /* ESTILO PARA O BOTÃO DE WHATSAPP */
+.whatsapp-button {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 30px auto; /* Espaçamento e centralização */
+    padding: 12px 25px;
+    border: 2px solid var(--accent-green);
+    background-color: transparent;
+    color: var(--accent-green);
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    background-color: var(--accent-green);
+    color: var(--terminal-bg); /* Cor do texto muda para preto no hover */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.5); /* Efeito de brilho verde */
+    transform: translateY(-3px);
+}
+
+/* Ajusta o espaçamento do ícone */
+.whatsapp-button .fa-whatsapp {
+    margin-right: 10px;
+}
+
+
+        @media (max-width: 768px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .system-title {
+                font-size: 2rem;
+            }
+            
+            .terminal-container {
+                padding: 15px;
+            }
+        }
