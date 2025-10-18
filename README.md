@@ -7,7 +7,7 @@ Este é o meu portfólio pessoal, desenvolvido para apresentar minhas habilidade
 
 O site apresenta minha identidade profissional, competências técnicas em desenvolvimento e informações de contato diretas.
 
-[**Acesse a versão ao vivo aqui!**](colocar o link da vercel)
+[**Acesse a versão ao vivo aqui!**](https://cobainderek.github.io/derek_cobain_portifolio/)
 
 ---
 
